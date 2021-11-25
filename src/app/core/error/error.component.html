@@ -1,1 +1,10 @@
-<p>error works!</p>
+<div class="container mt-5">
+  <div class="alert alert-warning" role="alert">An error occurred !</div>
+
+  <ng-container *ngIf="error">
+    <h5 class="text-danger">{{ error.message }}</h5>
+    <p class="font-weight-bold">
+      Note: if you are seeing this angular is not responsible
+    </p>
+  </ng-container>
+</div>
