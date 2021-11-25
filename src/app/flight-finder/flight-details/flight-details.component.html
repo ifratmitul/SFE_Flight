@@ -1,1 +1,16 @@
-<p>flight-details works!</p>
+<div class="card" *ngIf="FlightDetails">
+  <section class="airline">
+    <img src="{{ FlightDetails.AirlineLogoAddress }}" alt="" />
+    <p>{{ FlightDetails.AirlineName }}</p>
+  </section>
+  <section class="duration">
+    <h4>Timing Information</h4>
+    <div>In Bound: {{ FlightDetails.InboundFlightsDuration }}</div>
+    <div>Out Bound: {{ FlightDetails.OutboundFlightsDuration }}</div>
+    <div>Stops: {{ FlightDetails.Stops }}</div>
+  </section>
+  <section class="price">
+    <h4>Price:</h4>
+    <p>{{ FlightDetails.TotalAmount | currency }}</p>
+  </section>
+</div>

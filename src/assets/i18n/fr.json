@@ -1,9 +1,20 @@
-
-  
-  {
-    "HOME": {
-      "TITLE": "Bonjour Angular avec ngx-translate !",
-      "SELECT": "Changer la langue"
-    }
+{
+  "HOME": {
+    "TITLE": "Parcourez le monde avec nous",
+    "SUBTITLE": "Laissez-nous vous faciliter la vie en trouvant le vol qui vous convient",
+    "SEARCH": "Recherche de vols"
+  },
+  "NAVITEM": {
+    "HOME": "Accueil",
+    "FLIGHT": "Trouver un vol",
+    "ABOUT": "Sur",
+    "SELECT": "Changer la langue"
+  },
+  "FLIGHTFINDER": {
+    "BTN": "Chercher",
+    "LABEL1": "Code de l'aéroport de départ",
+    "LABEL2": "Code de l'aéroport d'arrivée",
+    "LABEL3": "Date de départ",
+    "LABEL4": "Date de retour"
   }
-  
+}

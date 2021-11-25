@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { BusyService } from '../core/services/busy.service';
+import { FlightDetails } from '../shared/models/IFlightDetails';
 import { FlightService } from './flight.service';
 
 @Component({
@@ -7,9 +11,50 @@ import { FlightService } from './flight.service';
   styleUrls: ['./flight-finder.component.scss'],
 })
 export class FlightFinderComponent implements OnInit {
-  constructor(private flightService: FlightService) {}
-
+  constructor(
+    private flightService: FlightService,
+    private toatr: ToastrService,
+    private busyService: BusyService
+  ) {}
+  searchForm: FormGroup;
+  Data: FlightDetails[] = [];
   ngOnInit(): void {
-    this.flightService.getAllFlightData();
+    this.initializeForm();
+  }
+
+  private initializeForm() {
+    this.searchForm = new FormGroup({
+      DepartureAirportCode: new FormControl('MEl', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(3),
+      ]),
+      ArrivalAirportCode: new FormControl('LHR', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(3),
+      ]),
+      DepartureDate: new FormControl(
+        new Date('2012-12-24T00:00:00+11:00'),
+        Validators.required
+      ),
+      ReturnDate: new FormControl(
+        new Date('2013-01-03T00:00:00+11:00'),
+        Validators.required
+      ),
+    });
+  }
+
+  onSearch() {
+    console.log(this.searchForm);
+    this.flightService.search(this.searchForm.value).subscribe(
+      (res: FlightDetails[]) => {
+        this.Data = [...res];
+      },
+      (err) => {
+        this.toatr.error(err.message);
+        this.busyService.idle();
+      }
+    );
   }
 }

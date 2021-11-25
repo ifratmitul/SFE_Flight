@@ -1,2 +1,84 @@
-<p>flight-finder works!</p>
-<app-flight-details></app-flight-details>
+<div class="flight">
+  <form [formGroup]="searchForm" (ngSubmit)="onSearch()" class="flight__search">
+    <div class="row g-3">
+      <div class="col">
+        <label class="form-label"
+          >Departure Airport Code
+          <span
+            class="warning"
+            *ngIf="searchForm.get('DepartureAirportCode').invalid"
+          >
+            (Please enter a valid input)
+          </span></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          placeholder="First name"
+          aria-label="First name"
+          formControlName="DepartureAirportCode"
+          maxlength="3"
+        />
+      </div>
+      <div class="col">
+        <label class="form-label"
+          >Arrival Airport Code
+          <span
+            class="warning"
+            *ngIf="searchForm.get('ArrivalAirportCode').invalid"
+          >
+            (Please enter a valid input)
+          </span>
+        </label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Last name"
+          aria-label="Last name"
+          formControlName="ArrivalAirportCode"
+          maxlength="3"
+        />
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="col">
+        <label class="form-label">Departure Date</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="First name"
+          aria-label="First name"
+          formControlName="DepartureDate"
+          readonly
+          bsDatepicker
+        />
+      </div>
+      <div class="col">
+        <label class="form-label">Return Date</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Last name"
+          aria-label="Last name"
+          formControlName="ReturnDate"
+          readonly
+          bsDatepicker
+        />
+      </div>
+    </div>
+    <button
+      type="submit"
+      class="btn btn-warning"
+      [disabled]="searchForm.invalid"
+    >
+      Search
+    </button>
+  </form>
+  <div *ngIf="Data.length" class="filter card"><h5>Advnace Filter</h5></div>
+  <div class="flight__search--result" *ngIf="Data.length">
+    <app-flight-details
+      *ngFor="let item of Data"
+      [FlightDetails]="item"
+    ></app-flight-details>
+  </div>
+</div>

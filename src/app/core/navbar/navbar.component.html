@@ -1,6 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<header class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#"
+      ><img src="assets/image/logo.png" alt="" class="logo"
+    /></a>
     <button
       class="navbar-toggler"
       type="button"
@@ -21,7 +23,7 @@
             routerLink="/"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
-            >Home</a
+            >{{ "NAVITEM.HOME" | translate }}</a
           >
         </li>
         <li class="nav-item">
@@ -30,13 +32,13 @@
             aria-current="page"
             routerLink="/find"
             routerLinkActive="active"
-            >Find Flight</a
+            >{{ "NAVITEM.FLIGHT" | translate }}</a
           >
         </li>
         <li class="nav-item">
           <a class="nav-link" aria-current="page"
             ><label>
-              {{ "HOME.SELECT" | translate }}
+              {{ "NAVITEM.SELECT" | translate }}
               <select #langSelect (change)="translate.use(langSelect.value)">
                 <option
                   *ngFor="let lang of translate.getLangs()"
@@ -52,4 +54,4 @@
       </ul>
     </div>
   </div>
-</nav>
+</header>
