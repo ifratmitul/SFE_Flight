@@ -39,7 +39,13 @@
           <a class="nav-link" aria-current="page"
             ><label>
               {{ "NAVITEM.SELECT" | translate }}
-              <select #langSelect (change)="translate.use(langSelect.value)">
+              <select
+                #langSelect
+                (change)="
+                  translate.use(langSelect.value);
+                  storeLangInfo(langSelect.value)
+                "
+              >
                 <option
                   *ngFor="let lang of translate.getLangs()"
                   [value]="lang"

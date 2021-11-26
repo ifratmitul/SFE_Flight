@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { BusyService } from '../core/services/busy.service';
 import { FlightDetails } from '../shared/models/IFlightDetails';
@@ -14,8 +15,14 @@ export class FlightFinderComponent implements OnInit {
   constructor(
     private flightService: FlightService,
     private toatr: ToastrService,
-    private busyService: BusyService
-  ) {}
+    private busyService: BusyService,
+    private translate: TranslateService
+  ) {
+    if (localStorage.getItem('lang_for_translation')) {
+      let lang = localStorage.getItem('lang_for_translation');
+      translate.use(lang);
+    }
+  }
   searchForm: FormGroup;
   Data: FlightDetails[] = [];
   rangeValues: number[] = [0, 16000];
