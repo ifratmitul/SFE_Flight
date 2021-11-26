@@ -9,7 +9,11 @@ import { FlightService } from './flight-finder/flight.service';
 export class AppComponent implements OnInit {
   constructor(private flightService: FlightService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (localStorage.getItem('lang_for_translation') === null) {
+      localStorage.setItem('lang_for_translation', 'en');
+    }
+  }
 
   title = 'Flight';
 }
