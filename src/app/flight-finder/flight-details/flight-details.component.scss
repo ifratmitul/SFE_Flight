@@ -1,0 +1,25 @@
+.card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-height: 150px;
+  min-width: 500px;
+  margin: 15px;
+  padding: 10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+  h4 {
+    font-size: 16px;
+  }
+  .airline {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    p {
+      margin-bottom: -2.4px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+}

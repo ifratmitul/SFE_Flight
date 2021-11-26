@@ -1,6 +1,21 @@
 {
-    "HOME": {
-      "TITLE": "Hello Angular with ngx-translate!",
-      "SELECT": "Change language"
-    }
+  "HOME": {
+    "TITLE": "Travel the world with us",
+    "SUBTITLE": "Let us make your life a bit easier by finding the right flight for you",
+    "SEARCH": "Search Flight"
+  },
+
+  "NAVITEM": {
+    "HOME": "Home",
+    "FLIGHT": "Find Flight",
+    "ABOUT": "About",
+    "SELECT": "Change language"
+  },
+  "FLIGHTFINDER": {
+    "SEARCH": "Search",
+    "LABEL1": "Departure Airport Code",
+    "LABEL2": "Arrival Airport Code",
+    "LABEL3": "Departure Date",
+    "LABEL4": "Return Date"
   }
+}
