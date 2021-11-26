@@ -74,13 +74,16 @@
       Search
     </button>
   </form>
-  <div class="filter card" *ngIf="Data.length">
+  <div
+    class="filter card"
+    *ngIf="Data.length || (filterMode && Data.length <= 0)"
+  >
     <h5>Advnace Filter</h5>
     <div class="col-4">
       <h5>Price: {{ rangeValues[0] + " - " + rangeValues[1] }}</h5>
       <p-slider
         [(ngModel)]="rangeValues"
-        [max]="5000"
+        [max]="16000"
         [range]="true"
       ></p-slider>
     </div>
@@ -88,10 +91,30 @@
       Filter
     </button>
   </div>
-  <div class="flight__search--result" *ngIf="Data.length">
+
+  <div class="flight__search--result" *ngIf="Data.length; else message">
     <app-flight-details
       *ngFor="let item of Data"
       [FlightDetails]="item"
     ></app-flight-details>
   </div>
+
+  <ng-template class="container" #message>
+    <div
+      class="alert_message text-center"
+      *ngIf="filterMode && Data.length <= 0"
+    >
+      Couldn't find any match with the filter, Change filter value or Click
+      <button class="btn btn-outline-success" (click)="ResetFilter()">
+        Reset Filter
+      </button>
+      to see all data
+    </div>
+    <div
+      class="alert_message text-center"
+      *ngIf="!filterMode && Data.length <= 0"
+    >
+      <p>Start Looking for Flight</p>
+    </div>
+  </ng-template>
 </div>
