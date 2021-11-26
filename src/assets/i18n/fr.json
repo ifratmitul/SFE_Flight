@@ -24,5 +24,13 @@
     "L3": "Hors limite",
     "L4": "Prix",
     "L5": "Arrêts"
+  },
+  "MESSAGE": {
+    "M1": "Impossible de trouver une correspondance avec le filtre, Modifier la valeur du filtre ou Cliquez pour voir toutes les données",
+    "M2": "Réinitialiser le filtre",
+    "M3": "Commencez à chercher un vol",
+    "M4": "Filtre",
+    "M5": "pour voir toutes les données",
+    "M6": "Veuillez saisir une entrée valide"
   }
 }

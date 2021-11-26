@@ -26,5 +26,13 @@
     "L3": "Out Bound",
     "L4": "Price",
     "L5": "Stops"
+  },
+  "MESSAGE": {
+    "M1": "Couldn't find any match with the filter, Change filter value or Click",
+    "M2": "Reset Filter",
+    "M3": "Start Looking for Flight",
+    "M4": "Filter",
+    "M5": "to see all data",
+    "M6": "Please enter a valid input"
   }
 }

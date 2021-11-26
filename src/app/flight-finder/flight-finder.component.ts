@@ -34,7 +34,7 @@ export class FlightFinderComponent implements OnInit {
 
   private initializeForm() {
     this.searchForm = new FormGroup({
-      DepartureAirportCode: new FormControl('MEl', [
+      DepartureAirportCode: new FormControl('MEL', [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(3),

@@ -18,14 +18,6 @@ export class FlightService {
     private tostr: ToastrService
   ) {}
 
-  getAllFlightData() {
-    this.busyService.busy();
-    this.http.get(this.apiUrl).subscribe((res: FlightDetails[]) => {
-      this.flightData = [...res];
-      console.log(this.flightData);
-    });
-  }
-
   search(searchParam) {
     this.busyService.busy();
     return this.http.get(this.apiUrl);

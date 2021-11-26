@@ -8,14 +8,12 @@
             class="warning"
             *ngIf="searchForm.get('DepartureAirportCode').invalid"
           >
-            (Please enter a valid input)
+            ({{ "MESSAGE.M6" | translate }})
           </span></label
         >
         <input
           type="text"
           class="form-control"
-          placeholder="First name"
-          aria-label="First name"
           formControlName="DepartureAirportCode"
           maxlength="3"
         />
@@ -27,14 +25,12 @@
             class="warning"
             *ngIf="searchForm.get('ArrivalAirportCode').invalid"
           >
-            (Please enter a valid input)
+            ({{ "MESSAGE.M6" | translate }})
           </span>
         </label>
         <input
           type="text"
           class="form-control"
-          placeholder="Last name"
-          aria-label="Last name"
           formControlName="ArrivalAirportCode"
           maxlength="3"
         />
@@ -48,8 +44,6 @@
         <input
           type="text"
           class="form-control"
-          placeholder="First name"
-          aria-label="First name"
           formControlName="DepartureDate"
           readonly
           bsDatepicker
@@ -62,8 +56,6 @@
         <input
           type="text"
           class="form-control"
-          placeholder="Last name"
-          aria-label="Last name"
           formControlName="ReturnDate"
           readonly
           bsDatepicker
@@ -84,7 +76,10 @@
   >
     <h5>{{ "FLIGHTFINDER.LABEL5" | translate }}</h5>
     <div class="col-4">
-      <h5>Price: {{ rangeValues[0] + " - " + rangeValues[1] }}</h5>
+      <h5>
+        {{ "DETAILS.L4" | translate }}:
+        {{ rangeValues[0] + " - " + rangeValues[1] }}
+      </h5>
       <p-slider
         [(ngModel)]="rangeValues"
         [max]="16000"
@@ -92,7 +87,7 @@
       ></p-slider>
     </div>
     <button class="btn btn-outline-success" (click)="advanceFilter()">
-      Filter
+      {{ "MESSAGE.M4" | translate }}
     </button>
   </div>
 
@@ -108,17 +103,17 @@
       class="alert_message text-center"
       *ngIf="filterMode && Data.length <= 0"
     >
-      Couldn't find any match with the filter, Change filter value or Click
+      {{ "MESSAGE.M1" | translate }}
       <button class="btn btn-outline-success" (click)="ResetFilter()">
-        Reset Filter
+        {{ "MESSAGE.M2" | translate }}
       </button>
-      to see all data
+      {{ "MESSAGE.M5" | translate }}
     </div>
     <div
       class="alert_message text-center"
       *ngIf="!filterMode && Data.length <= 0"
     >
-      <p>Start Looking for Flight</p>
+      <p>{{ "MESSAGE.M3" | translate }}</p>
     </div>
   </ng-template>
 </div>
