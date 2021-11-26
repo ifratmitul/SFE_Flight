@@ -18,6 +18,8 @@ export class FlightFinderComponent implements OnInit {
   ) {}
   searchForm: FormGroup;
   Data: FlightDetails[] = [];
+  rangeValues: number[] = [0, 5000];
+
   ngOnInit(): void {
     this.initializeForm();
   }
@@ -46,6 +48,7 @@ export class FlightFinderComponent implements OnInit {
   }
 
   onSearch() {
+    this.rangeValues = [0, 5000];
     console.log(this.searchForm);
     this.flightService.search(this.searchForm.value).subscribe(
       (res: FlightDetails[]) => {
@@ -56,5 +59,35 @@ export class FlightFinderComponent implements OnInit {
         this.busyService.idle();
       }
     );
+  }
+
+  advanceFilter() {
+    new Promise((resolve, reject) => {
+      this.flightService.search(this.searchForm.value).subscribe(
+        (res: FlightDetails[]) => {
+          this.Data = [...res];
+          if (res.length) resolve(this.Data);
+        },
+        (err) => {
+          this.toatr.error(err.message);
+          this.busyService.idle();
+          reject();
+        }
+      );
+    })
+      .then((res) => {
+        this.FilterInternal();
+      })
+      .catch((err) => {});
+  }
+
+  private FilterInternal() {
+    let data = [];
+    data = this.Data.filter(
+      (item) =>
+        item.TotalAmount >= this.rangeValues[0] &&
+        item.TotalAmount <= this.rangeValues[1]
+    );
+    this.Data = [...data];
   }
 }

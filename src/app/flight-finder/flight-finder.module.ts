@@ -5,7 +5,8 @@ import { FlightFinderComponent } from './flight-finder.component';
 import { SharedModule } from '../shared/shared.module';
 import { FlightRoutingModule } from './flight-routing.module';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SliderModule } from 'primeng/slider';
 
 @NgModule({
   declarations: [FlightDetailsComponent, FlightFinderComponent],
@@ -15,7 +16,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     FlightRoutingModule,
     BsDatepickerModule.forRoot(),
     ReactiveFormsModule,
+    FormsModule,
     SharedModule,
+    SliderModule,
   ],
 })
 export class FlightFinderModule {}
