@@ -38,8 +38,11 @@
 }
 
 .filter {
-  border: 1px solid red;
   padding: 5px 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .warning {

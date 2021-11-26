@@ -74,7 +74,20 @@
       Search
     </button>
   </form>
-  <div *ngIf="Data.length" class="filter card"><h5>Advnace Filter</h5></div>
+  <div class="filter card" *ngIf="Data.length">
+    <h5>Advnace Filter</h5>
+    <div class="col-4">
+      <h5>Price: {{ rangeValues[0] + " - " + rangeValues[1] }}</h5>
+      <p-slider
+        [(ngModel)]="rangeValues"
+        [max]="5000"
+        [range]="true"
+      ></p-slider>
+    </div>
+    <button class="btn btn-outline-success" (click)="advanceFilter()">
+      Filter
+    </button>
+  </div>
   <div class="flight__search--result" *ngIf="Data.length">
     <app-flight-details
       *ngFor="let item of Data"
