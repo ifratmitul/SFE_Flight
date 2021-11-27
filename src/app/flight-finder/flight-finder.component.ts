@@ -39,13 +39,13 @@ export class FlightFinderComponent implements OnInit {
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(3),
-        Validators.pattern(this.airportCodePattern)
+        Validators.pattern(this.airportCodePattern),
       ]),
       ArrivalAirportCode: new FormControl('LHR', [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(3),
-        Validators.pattern(this.airportCodePattern)
+        Validators.pattern(this.airportCodePattern),
       ]),
       DepartureDate: new FormControl(
         new Date('2012-12-24T00:00:00+11:00'),
@@ -108,6 +108,14 @@ export class FlightFinderComponent implements OnInit {
 
   ResetFilter() {
     this.rangeValues = [0, 16000];
-    this.advanceFilter();
+    this.flightService.getAllDataforReset().subscribe(
+      (res: FlightDetails[]) => {
+        this.Data = [...res];
+        this.initializeForm();
+      },
+      (err) => {
+        this.busyService.idle();
+      }
+    );
   }
 }

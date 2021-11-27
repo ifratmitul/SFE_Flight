@@ -91,7 +91,11 @@
         [range]="true"
       ></p-slider>
     </div>
-    <button class="btn btn-outline-success" (click)="advanceFilter()">
+    <button
+      class="btn btn-outline-success"
+      *ngIf="searchForm.valid"
+      (click)="advanceFilter()"
+    >
       {{ "MESSAGE.M4" | translate }}
     </button>
   </div>
