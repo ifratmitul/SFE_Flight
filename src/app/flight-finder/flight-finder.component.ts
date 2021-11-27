@@ -23,6 +23,7 @@ export class FlightFinderComponent implements OnInit {
       translate.use(lang);
     }
   }
+  private airportCodePattern = new RegExp(/^([a-zA-Z0-9]{3,3})$/);
   searchForm: FormGroup;
   Data: FlightDetails[] = [];
   rangeValues: number[] = [0, 16000];
@@ -38,11 +39,13 @@ export class FlightFinderComponent implements OnInit {
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(3),
+        Validators.pattern(this.airportCodePattern)
       ]),
       ArrivalAirportCode: new FormControl('LHR', [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(3),
+        Validators.pattern(this.airportCodePattern)
       ]),
       DepartureDate: new FormControl(
         new Date('2012-12-24T00:00:00+11:00'),
